@@ -1,9 +1,12 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
-import React, { Component } from "react";
+import React, { useState, useEffect, useCallback, Component } from "react";
 import { render } from "react-dom";
 import ReactMapGl from "react-map-gl";
+import { listLogEntries } from "../API";
 import Geocoder from "react-map-gl-geocoder";
+import AddLocation from './addlocation.js'
+import MapMarker from './mapmarker.js'
 
 // Please be a decent human and don't abuse my Mapbox API token.
 // If you fork this sandbox, replace my API token with your own.
@@ -11,14 +14,44 @@ import Geocoder from "react-map-gl-geocoder";
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoicmFjaGVsb21ib2siLCJhIjoiY2tjODZzY2xjMDlzNzJ0bXBpZmxlaHpxbSJ9.gdsDXK9lXiEIQG4GDtbZgg";
 
+  const queryParams = {
+    country: 'us'
+}
+
+
 class Map extends Component {
   state = {
     viewport: {
       latitude: 37.7577,
       longitude: -122.4376,
       zoom: 8
-    }
+    },
+    logEntries: [],
+    showPopUp: {},
+    addLocation: null
+
   };
+
+  getTravelEntries = async () => {
+    const logEntries = await listLogEntries();
+    //setLogEntries(logEntries);
+    this.setState({logEntries: this.state.logEntries})
+  };
+
+  useEffect = (() => {
+    this.getTravelEntries();
+  }, []);
+
+  markVisited = (event) => {
+    const [longitude, latitude] = event.lngLat;
+    /*setAddLocation({
+      latitude,
+      longitude,
+    });*/
+    this.setState({ addLocation: [latitude,longitude]})
+  };
+  
+  
 
   mapRef = React.createRef();
 
@@ -26,6 +59,11 @@ class Map extends Component {
     this.setState({
       viewport: { ...this.state.viewport, ...viewport }
     });
+  };
+
+  onSelected = (viewport, item) => {
+    this.setState({...this.state.viewport, ...viewport});
+    console.log('Selected: ', item);
   };
 
   // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
@@ -43,21 +81,43 @@ class Map extends Component {
 
     return (
       <div style={{ height: "100vh" }}>
+        
         <ReactMapGl
           ref={this.mapRef}
           {...viewport}
           width="100%"
           mapStyle='mapbox://styles/mapbox/satellite-streets-v11'
-          height="100%"
+          height="600px"
           onViewportChange={this.handleViewportChange}
           mapboxApiAccessToken={MAPBOX_TOKEN}
+          onDblClick={this.markVisited}
+
         >
           <Geocoder
             mapRef={this.mapRef}
             onViewportChange={this.handleGeocoderViewportChange}
             mapboxApiAccessToken={MAPBOX_TOKEN}
+            viewport={viewport}
+            //onSelected={this.onSelected}
+            //queryParams={queryParams}
+            //hideOnSelect={true}
             position="top-left"
           />
+
+<MapMarker
+        logEntries={this.state.logEntries}
+        viewport={viewport}
+        showPopUp={this.state.showPopUp}
+        setShowPopUp={(showPopUp) => this.setState({showPopUp})}
+      />
+
+<AddLocation
+        addLocation={this.state.addLocation}
+        viewport={viewport}
+        setAddLocation={(addLocation) => this.setState({ addLocation})}
+        getTravelEntries={this.getTravelEntries()}
+      />
+          
         </ReactMapGl>
       </div>
     );

@@ -2,9 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 //import Home from './components/homepage/index.js'
-import Map from './components/testmp/index.js'
+import Map from './components/map.js'
+import NavigationBar from './components/navigationbar.js'
 import Geocoder from 'react-mapbox-gl-geocoder'
 import { render } from '@testing-library/react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const queryParams = {
   country: 'us'
@@ -22,11 +24,6 @@ class App extends React.Component{
   }
   
   
-
-  onSelected = (viewport, item) => {
-    this.setState({...this.state.viewport, ...viewport});
-    console.log('Selected: ', item);
-  };
   
 
 
@@ -34,7 +31,8 @@ class App extends React.Component{
     
     return(
       <div>
-      <Map component={Map}></Map>
+        <NavigationBar />
+      <Map />
       {/*<Home ref={this.mapRef} {...viewport} onViewportChange={(newViewport) => this.setState({viewport: newViewport})}/>*/}
       </div>
     );
