@@ -7,10 +7,17 @@ import { listLogEntries } from "../API";
 import Geocoder from "react-map-gl-geocoder";
 import AddLocation from './addlocation.js'
 import MapMarker from './mapmarker.js'
+import Search from './search.js'
 
 // Please be a decent human and don't abuse my Mapbox API token.
 // If you fork this sandbox, replace my API token with your own.
 // Ways to set Mapbox token: https://uber.github.io/react-map-gl/#/Documentation/getting-started/about-mapbox-tokens
+
+const MAPBOX_TOKEN =
+  "pk.eyJ1IjoicmFjaGVsb21ib2siLCJhIjoiY2tjODZzY2xjMDlzNzJ0bXBpZmxlaHpxbSJ9.gdsDXK9lXiEIQG4GDtbZgg";
+
+
+/*
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoicmFjaGVsb21ib2siLCJhIjoiY2tjODZzY2xjMDlzNzJ0bXBpZmxlaHpxbSJ9.gdsDXK9lXiEIQG4GDtbZgg";
 
@@ -47,7 +54,7 @@ class Map extends Component {
     /*setAddLocation({
       latitude,
       longitude,
-    });*/
+    });
     this.setState({ addLocation: [latitude,longitude]})
   };
   
@@ -124,4 +131,103 @@ class Map extends Component {
   }
 }
  
+export default Map;*/
+
+const Map = () => {
+  const [logEntries, setLogEntries] = useState([]);
+  const [showPopUp, setShowPopUp] = useState({});
+  const [addLocation, setAddLocation] = useState(null);
+
+  const [viewport, setViewport] = useState({
+    width: "100vw",
+    height: "100vh",
+    latitude: 23.7805733,
+    longitude: 90.279239,
+    zoom: 6.5,
+  });
+
+  const getTravelEntries = async () => {
+    const logEntries = await listLogEntries();
+    setLogEntries(logEntries);
+  };
+
+
+  useEffect(() => {
+    getTravelEntries();
+  }, []);
+
+  const markVisited = (event) => {
+    const [longitude, latitude] = event.lngLat;
+    setAddLocation({
+      latitude,
+      longitude,
+    });
+  };
+
+  const mapRef = React.createRef();
+
+  const handleViewportChange = viewport => {
+    this.setState({
+      viewport: { ...this.state.viewport, ...viewport }
+    });
+  };
+
+  const onSelected = (viewport, item) => {
+    this.setState({...this.state.viewport, ...viewport});
+    console.log('Selected: ', item);
+  };
+
+  // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
+  const handleGeocoderViewportChange = viewport => {
+    const geocoderDefaultOverrides = { transitionDuration: 1000 };
+
+    return this.handleViewportChange({
+      ...viewport,
+      ...geocoderDefaultOverrides
+    });
+  };
+
+
+  /* const setCoordinate = useCallback((event) => {
+    console.log(event);
+  }, []); */
+
+  return (
+    
+    <ReactMapGl
+    
+    {...viewport}
+      mapStyle="mapbox://styles/mapbox/satellite-streets-v11"
+      mapboxApiAccessToken={MAPBOX_TOKEN}
+      onViewportChange={setViewport}
+      onDblClick={markVisited}
+    >
+      <MapMarker
+        logEntries={logEntries}
+        viewport={viewport}
+        showPopUp={showPopUp}
+        setShowPopUp={setShowPopUp}
+      />
+
+<Search setViewport={setViewport} />
+
+      
+      <AddLocation
+        addLocation={addLocation}
+        viewport={viewport}
+        setAddLocation={setAddLocation}
+        getTravelEntries={getTravelEntries}
+      />
+
+    </ReactMapGl>
+
+  
+      
+
+
+    
+  );
+  
+};
+
 export default Map;
