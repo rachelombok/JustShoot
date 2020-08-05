@@ -5,7 +5,7 @@ import {
     Route,
     useParams,
   } from "react-router-dom";
-  import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
+  import { Navbar,Nav,NavDropdown,Form,FormControl,Button, Popover, OverlayTrigger, Tooltip } from 'react-bootstrap'
   import './navbar.css';
 
   const hstyle = {
@@ -13,7 +13,23 @@ import {
     backgroundColor: 'orange'
   }
 
-  class NavigationBar extends React.Component{
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Title as="h3">Add Point</Popover.Title>
+      <Popover.Content>
+        And here's some <strong>amazing</strong> content. It's very engaging.
+        right?
+      </Popover.Content>
+      <Popover.Title as="h3">Add Point</Popover.Title>
+      <Popover.Content>
+        And here's some <strong>amazing</strong> content. It's very engaging.
+        right?
+      </Popover.Content>
+    </Popover>
+  );
+
+
+class NavigationBar extends React.Component{
     constructor(props) {
         super(props);
     
@@ -42,12 +58,24 @@ import {
           return(
               <div>
                   <Navbar className='navgradient'>
-                  <Navbar.Brand> Brand </Navbar.Brand>
+                  <Navbar.Brand className='navfont'> JustShoot </Navbar.Brand>
                       <Nav className='mr-auto'>
-                      <NavDropdown title="Guide" onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                      {/*<NavDropdown title="Guide" onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                         <Navbar.Text >Double Click to add Point</Navbar.Text>
                         <Navbar.Text >Click any point to see details</Navbar.Text>
-                      </NavDropdown>
+          </NavDropdown>*/}
+                      <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+    <Button variant="success">Click me to see</Button>
+          </OverlayTrigger>
+
+
+          <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Double click to add point<br></br>Click existing point to see details</Tooltip>} placement='right'>
+  <span className="d-inline-block">
+    <Button disabled style={{ pointerEvents: 'none' }}>
+      Disabled button
+    </Button>
+  </span>
+</OverlayTrigger>
                       </Nav>
                       <Nav className='ml-auto'>
                           <Nav.Link >Profile</Nav.Link>

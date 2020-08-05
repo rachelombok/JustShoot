@@ -1,5 +1,5 @@
 import "mapbox-gl/dist/mapbox-gl.css";
-import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+//import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import React, { useState, useEffect, useCallback, Component } from "react";
 import { render } from "react-dom";
 import ReactMapGl from "react-map-gl";
@@ -8,6 +8,8 @@ import Geocoder from "react-map-gl-geocoder";
 import AddLocation from './addlocation.js'
 import MapMarker from './mapmarker.js'
 import Search from './search.js'
+import GeocoderSearch from './geocoder.js'
+
 
 // Please be a decent human and don't abuse my Mapbox API token.
 // If you fork this sandbox, replace my API token with your own.
@@ -188,6 +190,7 @@ const Map = () => {
   };
 
 
+  const myMap = React.useRef()
   /* const setCoordinate = useCallback((event) => {
     console.log(event);
   }, []); */
@@ -195,7 +198,7 @@ const Map = () => {
   return (
     
     <ReactMapGl
-    
+    ref={myMap}
     {...viewport}
       mapStyle="mapbox://styles/mapbox/satellite-streets-v11"
       mapboxApiAccessToken={MAPBOX_TOKEN}
@@ -209,10 +212,27 @@ const Map = () => {
         setShowPopUp={setShowPopUp}
       />
 
-<Search setViewport={setViewport} />
+<Geocoder
+
+            mapRef={myMap}
+            onViewportChange={setViewport}
+            mapboxApiAccessToken={MAPBOX_TOKEN}
+            viewport={viewport}
+            //onSelected={this.onSelected}
+            //queryParams={queryParams}
+            //hideOnSelect={true}
+            position="top-left"
+          />
+
+      
+
+      
+
+{/*<Search setViewport={setViewport} />*/}
 
       
       <AddLocation
+        show={true}
         addLocation={addLocation}
         viewport={viewport}
         setAddLocation={setAddLocation}

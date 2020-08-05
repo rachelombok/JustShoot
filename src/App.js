@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-//import Home from './components/homepage/index.js'
+import Home from './components/homepage.js'
 import Map from './components/map.js'
 import NavigationBar from './components/navigationbar.js'
 import Geocoder from 'react-mapbox-gl-geocoder'
@@ -31,7 +31,7 @@ class App extends React.Component{
     
     return(
       <div>
-        <NavigationBar />
+        <NavigationBar/>
       <Map />
       {/*<Home ref={this.mapRef} {...viewport} onViewportChange={(newViewport) => this.setState({viewport: newViewport})}/>*/}
       </div>

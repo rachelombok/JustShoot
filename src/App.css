@@ -43,25 +43,30 @@
 
 .react-geocoder {
   position: relative;
-  width: 300px;
+  width: 500px;
 }
-
+.texter{
+  background-color: red;
+  border: green;
+}
 .react-geocoder input {
   width: 100%;
+  background-color: black;
 }
+
 
 .react-geocoder-results {
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 1;
-  background-color: white;
+  background-color: red;
   border: 1px solid black;
   width: 100%;
 }
 
 .react-geocoder-item {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid red;
 }
 
 .marker {
@@ -125,45 +130,7 @@
   color: white;
 }
 
-.searchLocation {
-  position: fixed;
-  top: 20px;
-  right: 10px;
-  z-index: 0;
-}
-.searchLocation input {
-  background: #fff;
-  height: 25px;
-  padding: 5px 8px;
-  font-size: 14px;
-  border: 1px solid #fff;
-  border-radius: 4px 0 0 4px;
-}
-.searchLocation button {
-  padding: 9px 15px;
-  border-radius: 0 4px 4px 0;
-  border: 1px solid #dddddd;
-  background: #dddddd;
-  cursor: pointer;
-}
-.searchtool {
-  border: 1px solid rgb(116, 116, 116);
-  border-radius: 4px;
-}
-.searchLocation ul {
-  margin: 0;
-  padding: 0;
-  background: #fff;
-}
-.searchLocation ul li {
-  list-style: none;
-  padding: 8px 8px;
-  cursor: pointer;
-  z-index: 9999;
-}
-.searchLocation ul li:hover {
-  background-color: #f3f3f3;
-}
+
 
 .credit p {
   margin: 5px;
@@ -270,3 +237,4 @@ input[type="range"]:focus::-ms-fill-lower {
 input[type="range"]:focus::-ms-fill-upper {
   background: rgb(69, 223, 171);
 }
+
