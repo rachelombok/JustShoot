@@ -1,5 +1,6 @@
 import "mapbox-gl/dist/mapbox-gl.css";
-//import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import "./geocoder.css"
 import React, { useState, useEffect, useCallback, Component } from "react";
 import { render } from "react-dom";
 import ReactMapGl from "react-map-gl";
@@ -18,7 +19,9 @@ import GeocoderSearch from './geocoder.js'
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoicmFjaGVsb21ib2siLCJhIjoiY2tjODZzY2xjMDlzNzJ0bXBpZmxlaHpxbSJ9.gdsDXK9lXiEIQG4GDtbZgg";
 
-
+const geostyle = {
+  margin: '20px'
+}
 /*
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoicmFjaGVsb21ib2siLCJhIjoiY2tjODZzY2xjMDlzNzJ0bXBpZmxlaHpxbSJ9.gdsDXK9lXiEIQG4GDtbZgg";
@@ -166,11 +169,12 @@ const Map = () => {
       longitude,
     });
     setShow({
-      show: true
+     show: true
     });
   };
 
   const mapRef = React.createRef();
+  const geocoderContainerRef = React.useRef();
 
   const handleViewportChange = viewport => {
     this.setState({
@@ -200,6 +204,7 @@ const Map = () => {
   }, []); */
 
   return (
+    <div >
     
     <ReactMapGl
     ref={myMap}
@@ -217,7 +222,7 @@ const Map = () => {
       />
 
 <Geocoder
-
+            style={geostyle}
             mapRef={myMap}
             onViewportChange={setViewport}
             mapboxApiAccessToken={MAPBOX_TOKEN}
@@ -247,7 +252,7 @@ const Map = () => {
     </ReactMapGl>
 
   
-      
+    </div>
 
 
     

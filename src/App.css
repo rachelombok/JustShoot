@@ -238,3 +238,6 @@ input[type="range"]:focus::-ms-fill-upper {
   background: rgb(69, 223, 171);
 }
 
+.geosearch{
+  margin: 20px;
+}

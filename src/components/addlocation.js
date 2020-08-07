@@ -3,36 +3,9 @@ import { Marker, Popup } from "react-map-gl";
 import { Form,FormControl,Button, Popover, OverlayTrigger, Tooltip, Modal } from 'react-bootstrap'
 import LogEntryForm from "./logentryform.js";
 
-function Mod() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-}
 
 const AddLocation = (props) => {
-    let { addLocation, viewport, setAddLocation, getTravelEntries, show, setShow } = props;
+    const { addLocation, viewport, setAddLocation, getTravelEntries, show, setShow } = props;
     //let show = props.show
     //const [show, setShow] = useState(false);
 
@@ -68,12 +41,16 @@ const AddLocation = (props) => {
             </Marker>
             <Modal 
             show={show}
-            onHide={() => setShow(false)}>
+            onHide={() => setShow(false)}
+            latitude={addLocation.latitude}
+            longitude={addLocation.longitude}>
               <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-
+              <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
               <Modal.Footer>
           <Button variant="secondary" onClick={() => setShow(false)}>
-            Close
+            Clos
           </Button>
           
         </Modal.Footer>
