@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { createTravelEntry, uploadImage } from "../API";
 import { addLog } from '../API';
-
+import { Form,FormControl,Button, Popover, OverlayTrigger, Tooltip, Modal } from 'react-bootstrap'
 const LogEntryForm = (props) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -37,6 +37,7 @@ const LogEntryForm = (props) => {
     };
   
     return (
+      
       <form className="entry-form" onSubmit={handleSubmit(onSubmit)}>
         {error ? <h3 className="errormsg">{error.message}</h3> : null}
         <label htmlFor="title">Place Name: </label>

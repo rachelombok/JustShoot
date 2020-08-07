@@ -139,6 +139,7 @@ const Map = () => {
   const [logEntries, setLogEntries] = useState([]);
   const [showPopUp, setShowPopUp] = useState({});
   const [addLocation, setAddLocation] = useState(null);
+  const [show, setShow] = useState(false);
 
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -163,6 +164,9 @@ const Map = () => {
     setAddLocation({
       latitude,
       longitude,
+    });
+    setShow({
+      show: true
     });
   };
 
@@ -232,10 +236,11 @@ const Map = () => {
 
       
       <AddLocation
-        show={true}
+        show={show}
         addLocation={addLocation}
         viewport={viewport}
         setAddLocation={setAddLocation}
+        setShow={setShow}
         getTravelEntries={getTravelEntries}
       />
 
