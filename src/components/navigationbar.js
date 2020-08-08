@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    useParams,
-  } from "react-router-dom";
-import { Navbar,Nav,NavDropdown,Form,FormControl,Button, Popover, OverlayTrigger, Tooltip } from 'react-bootstrap'
+
+import { Navbar,Nav,Button, Popover, OverlayTrigger} from 'react-bootstrap'
 import './navbar.css';
 import logo from '../images/digcamtrans.png'
 
@@ -18,12 +13,11 @@ import logo from '../images/digcamtrans.png'
     <Popover id="popover-basic">
       <Popover.Title as="h3">Add Point</Popover.Title>
       <Popover.Content style={{color: 'white'}}>
-      Get inspired by photographers in the area, find great spots to take photos, and share your own.
       To share photos with the community, double click the map and upload your photo, set the correct location, and add a little writeup + details.
       </Popover.Content>
       <Popover.Title as="h3">Browse Points</Popover.Title>
       <Popover.Content style={{color: 'white'}}>
-      Browse the map and search for snap spots posted by the JustShoot community.
+      Browse the map and search for snap spots posted by the JustShoot community, and click to see each one.
       </Popover.Content>
     </Popover>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Home from './components/homepage.js'
 import Map from './components/map.js'

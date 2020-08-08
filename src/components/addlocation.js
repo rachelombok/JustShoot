@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Marker, Popup } from "react-map-gl";
-import { Form,FormControl,Button, Popover, OverlayTrigger, Tooltip, Modal } from 'react-bootstrap'
+import React from "react";
+import { Marker } from "react-map-gl";
+import {  Modal } from 'react-bootstrap'
 import LogEntryForm from "./logentryform.js";
 import './addlocation.css'
 

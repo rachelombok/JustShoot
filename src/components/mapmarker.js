@@ -54,19 +54,20 @@ const MapMarker = (props) => {
                 <p>
                   Visited on: {new Date(entry.date).toLocaleDateString()}
                 </p>
-                { entry.images.length > 0 ? (
+                {/* entry.images.length > 0 ? (
                   entry.images.map(image =>{
                     return <img className="placeImg" src={image} alt="place"/>
-                    /*for(i = 0; i < entry.images.length; i++){
-                      return <img className="placeImg" src={entry.images[i]} alt="place" />
-                    }*/
-                    /*
-                    {entry.image ? (
-                  <img className="placeImg" src={entry.image} alt="place" />
-                ) : null}
-                    */
                   })
+                  ) : null}
+                    for(i = 0; i < entry.images.length; i++){
+                      return <img className="placeImg" src={entry.images[i]} alt="place" />
+                    */}
+                    
+                    {entry.images ? (
+                  <img className="placeImg" src={entry.images} alt="place" />
                 ) : null}
+                    
+                  
               </div>
             </Popup>
           ) : null}

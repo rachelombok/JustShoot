@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar } from 'react-bootstrap'
 import './navbar.css';
 import github from '../images/ghsvg.svg'
 import instagram from '../images/igsvg.png'
+
 class Footer extends React.Component{
 
     render(){
@@ -18,11 +19,11 @@ class Footer extends React.Component{
             </Navbar.Collapse>
             <Navbar.Collapse className="justify-content-end">
                 <Navbar.Text>
-               <a href='https://github.com/rachelombok/JustShoot'><img src={github} style={{width: '20px', marginRight: '10px'}}/></a>
+               <a href='https://github.com/rachelombok/JustShoot'><img src={github} style={{width: '20px', marginRight: '10px'}} alt='Github svg link'/></a>
                 </Navbar.Text>{'   '}
 
                 <Navbar.Text>
-                <a href='https://www.instagram.com/rachelombok/'><img src={instagram} style={{width: '20px'}}/></a>
+                <a href='https://www.instagram.com/rachelombok/'><img src={instagram} style={{width: '20px'}} alt='Rachel Ombok IG'/></a>
                 </Navbar.Text>{' '}
             </Navbar.Collapse>
         </Navbar>

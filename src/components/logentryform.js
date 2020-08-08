@@ -82,9 +82,9 @@ const LogEntryForm = (props) => {
         </Form.Group>
         <Form.Group>
           <Form.Label htmlFor='images' >Images</Form.Label>
-          <Form.File name='images' type="file" accept="image/png, image/jpeg" multiple required ref={register}/>
+          <Form.File name='images' type="file" accept="image/png, image/jpeg" required ref={register}/>
           <Form.Text className="text-muted">
-            Select up to 5 images.
+        {/*Select up to 5 images.*/}
           </Form.Text>
         </Form.Group>
         <Form.Group>
