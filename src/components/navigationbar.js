@@ -57,7 +57,7 @@ class NavigationBar extends React.Component{
       render(){
           return(
               <div>
-                  <Navbar className='navgradient' fixed="bottom">
+                  <Navbar className='navgradient' fixed="top">
                   <Navbar.Brand className='navfont'> JustShoot </Navbar.Brand>
                       <Nav className='mr-auto'>
                       {/*<NavDropdown title="Guide" onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle}>

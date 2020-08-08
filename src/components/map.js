@@ -5,7 +5,7 @@ import React, { useState, useEffect, useCallback, Component } from "react";
 import { render } from "react-dom";
 import ReactMapGl from "react-map-gl";
 import { listLogEntries } from "../API";
-import Geocoder from "react-map-gl-geocoder";
+import Geocoder from "react-map-gl-geocoder"
 import AddLocation from './addlocation.js'
 import MapMarker from './mapmarker.js'
 import Search from './search.js'
@@ -174,7 +174,7 @@ const Map = () => {
   };
 
   const mapRef = React.createRef();
-  const geocoderContainerRef = React.useRef();
+  //const geocoderContainerRef = React.useRef();
 
   const handleViewportChange = viewport => {
     this.setState({
@@ -199,12 +199,16 @@ const Map = () => {
 
 
   const myMap = React.useRef()
+  const geocoderContainerRef = React.useRef();
   /* const setCoordinate = useCallback((event) => {
     console.log(event);
   }, []); */
 
+  
+
   return (
     <div >
+      
     
     <ReactMapGl
     ref={myMap}
@@ -220,10 +224,20 @@ const Map = () => {
         showPopUp={showPopUp}
         setShowPopUp={setShowPopUp}
       />
+      <div ref={geocoderContainerRef}
+          style={{
+            height: 50,
+            backgroundColor: 'transparent',
+            display: "flex",
+            alignItems: "center",
+            paddingLeft: 20,
+            paddingTop: 90
+          }}/>
 
 <Geocoder
             style={geostyle}
             mapRef={myMap}
+            containerRef={geocoderContainerRef}
             onViewportChange={setViewport}
             mapboxApiAccessToken={MAPBOX_TOKEN}
             viewport={viewport}
@@ -232,6 +246,7 @@ const Map = () => {
             //hideOnSelect={true}
             position="top-left"
           />
+          
 
       
 
