@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap'
 import './navbar.css';
-
+import github from '../images/ghsvg.svg'
+import instagram from '../images/igsvg.png'
 class Footer extends React.Component{
 
     render(){
     return(
         <div>
         <Navbar className='footergradient' fixed='bottom'>
-            <Navbar.Brand >logo</Navbar.Brand>
+            <Navbar.Brand ></Navbar.Brand>
             <Navbar.Toggle />
+            <Navbar.Collapse >
+            <Navbar.Text >
+                Made with ♡ by <a href='https://rachelombok.com'>Rachel Ombok</a>
+                </Navbar.Text>
+            </Navbar.Collapse>
             <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-                (copyright2020)Made with love by <a href='www.rachelombok.com'>Rachel Ombok</a>
-                </Navbar.Text>{' '}
                 <Navbar.Text>
-                Github svg + link
-                </Navbar.Text>{' '}
+               <a href='https://github.com/rachelombok/JustShoot'><img src={github} style={{width: '20px', marginRight: '10px'}}/></a>
+                </Navbar.Text>{'   '}
+
                 <Navbar.Text>
-                IG svg + link
+                <a href='https://www.instagram.com/rachelombok/'><img src={instagram} style={{width: '20px'}}/></a>
                 </Navbar.Text>{' '}
-                
             </Navbar.Collapse>
         </Navbar>
         </div>

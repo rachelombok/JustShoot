@@ -1,8 +1,11 @@
 import React from "react";
 import { Marker, Popup } from "react-map-gl";
+import { render } from "react-dom";
 
 const MapMarker = (props) => {
+
   return (
+
     <div>
       {props.logEntries.map((entry) => (
         <React.Fragment key={entry._id}>
@@ -19,7 +22,7 @@ const MapMarker = (props) => {
                 width: `${3 * props.viewport.zoom}`,
               }}
               viewBox="0 0 24 24"
-              fill="none"
+              fill="rgb(18, 21, 168)"
               onClick={() => {
                 props.setShowPopUp({
                   [entry._id]: true,
@@ -44,15 +47,25 @@ const MapMarker = (props) => {
             >
               <div className="popup">
                 <h3>Place Name: {entry.title}</h3>
-                <p>Comment: {entry.comments}</p>
+                <p>Photographer: @{entry.photographer}</p>
                 <p>
-                  {entry.rating ? <span>Rating: {entry.rating}</span> : null}
+                  Description: {entry.description}
                 </p>
                 <p>
-                  Visited on: {new Date(entry.visitDate).toLocaleDateString()}
+                  Visited on: {new Date(entry.date).toLocaleDateString()}
                 </p>
-                {entry.image ? (
+                { entry.images.length > 0 ? (
+                  entry.images.map(image =>{
+                    return <img className="placeImg" src={image} alt="place"/>
+                    /*for(i = 0; i < entry.images.length; i++){
+                      return <img className="placeImg" src={entry.images[i]} alt="place" />
+                    }*/
+                    /*
+                    {entry.image ? (
                   <img className="placeImg" src={entry.image} alt="place" />
+                ) : null}
+                    */
+                  })
                 ) : null}
               </div>
             </Popup>

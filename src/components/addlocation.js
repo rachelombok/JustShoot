@@ -32,7 +32,7 @@ const AddLocation = (props) => {
                 viewBox="0 0 24 24"
                 strokeWidth="2"
                 
-                fill="none"
+                fill="rgb(18, 21, 168)"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >

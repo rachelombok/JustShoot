@@ -71,7 +71,7 @@
 
 .marker {
   transform: translate(-50%, -100%);
-  stroke: #f21d48;
+  stroke: rgb(107, 10, 171);
   cursor: pointer;
 }
 .popup {

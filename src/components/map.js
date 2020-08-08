@@ -2,7 +2,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import React, { useState, useEffect, useCallback, Component } from "react";
 import { render } from "react-dom";
-import ReactMapGl from "react-map-gl";
+import ReactMapGl,{ Marker, Popup, NavigationControl} from "react-map-gl";
 import { listLogEntries } from "../API";
 import Geocoder from "react-map-gl-geocoder"
 import AddLocation from './addlocation.js'
@@ -146,9 +146,9 @@ const Map = () => {
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
-    latitude: 23.7805733,
-    longitude: 90.279239,
-    zoom: 6.5,
+    latitude: 40.730610,
+    longitude: -73.935242,
+    zoom: 9.5,
   });
 
   const getTravelEntries = async () => {
@@ -217,6 +217,8 @@ const Map = () => {
       onViewportChange={setViewport}
       onDblClick={markVisited}
     >
+      
+        
       <MapMarker
         logEntries={logEntries}
         viewport={viewport}
@@ -230,7 +232,7 @@ const Map = () => {
             display: "flex",
             alignItems: "center",
             paddingLeft: 20,
-            paddingTop: 90
+            paddingTop: 95
           }}/>
 
 <Geocoder
@@ -245,6 +247,9 @@ const Map = () => {
             //hideOnSelect={true}
             position="top-left"
           />
+          <div style={{position: 'absolute', right: 10}}>
+          <NavigationControl />
+        </div>
           
 
 {/*<Search setViewport={setViewport} />*/}

@@ -54,8 +54,8 @@ const LogEntryForm = (props) => {
       <style type='text/css'>
       {`
       .btn-flat {
-      background: linear-gradient(rgba(250,0,0,0.5),transparent);
-      background-color: orange;
+      background: linear-gradient(90deg, rgba(18,21,168,1) 0%, rgba(163,0,232,1) 100%);
+      background-color: rgb(18,21,168);
       color: white;
     }
 
@@ -105,7 +105,7 @@ const LogEntryForm = (props) => {
         </Form.Group>
         
         <Button disabled={loading} type='submit' {...loading ? "Creating..." : "Created"} variant='flat' block size='lg'>
-            Submit
+            <b>Submit</b>
         </Button>
         
       </Form></div>
