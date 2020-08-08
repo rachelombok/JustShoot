@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Marker, Popup } from "react-map-gl";
 import { Form,FormControl,Button, Popover, OverlayTrigger, Tooltip, Modal } from 'react-bootstrap'
 import LogEntryForm from "./logentryform.js";
-
+import './addlocation.css'
 
 const AddLocation = (props) => {
     const { addLocation, viewport, setAddLocation, getTravelEntries, show, setShow } = props;
@@ -30,32 +30,44 @@ const AddLocation = (props) => {
                   width: `${4 * viewport.zoom}`,
                 }}
                 viewBox="0 0 24 24"
-                stroke-width="2"
+                strokeWidth="2"
+                
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
             </Marker>
             <Modal 
+            size="lg"
             show={show}
-            onHide={() => setShow(false)}
+            onHide={() => {
+              setShow(false);
+               setAddLocation(null);
+              }}
+            dialogClassName="modal-90w"
+            aria-labelledby="custom-modal"
             latitude={addLocation.latitude}
             longitude={addLocation.longitude}>
-              <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
               <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>New Photo Location</Modal.Title>
         </Modal.Header>
-              <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShow(false)}>
-            Clos
-          </Button>
-          
-        </Modal.Footer>
+              <Modal.Body>
+              <div>
+                <LogEntryForm
+                  coordinates={addLocation}
+                  onFormClose={() => {
+                    setAddLocation(null);
+                    getTravelEntries();
+                  }}
+                />
+              </div>
+              </Modal.Body>
+              
 
-            </Modal>
+            </Modal>{" "}
             
             {/*<Modal show={show} onHide={() => {
                 setAddLocation(null);

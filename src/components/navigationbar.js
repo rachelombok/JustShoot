@@ -17,13 +17,12 @@ import {
     <Popover id="popover-basic">
       <Popover.Title as="h3">Add Point</Popover.Title>
       <Popover.Content>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
+      Get inspired by photographers in the area, find great spots to take photos, and share your own.
+      To share photos with the community, double click the map and upload your photo, set the correct location, and add a little writeup + details.
       </Popover.Content>
-      <Popover.Title as="h3">Add Point</Popover.Title>
+      <Popover.Title as="h3">Browse Points</Popover.Title>
       <Popover.Content>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
+      Browse the map and search for snap spots posted by the JustShoot community.
       </Popover.Content>
     </Popover>
   );

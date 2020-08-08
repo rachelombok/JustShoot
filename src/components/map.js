@@ -1,6 +1,5 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
-import "./geocoder.css"
 import React, { useState, useEffect, useCallback, Component } from "react";
 import { render } from "react-dom";
 import ReactMapGl from "react-map-gl";
@@ -247,10 +246,6 @@ const Map = () => {
             position="top-left"
           />
           
-
-      
-
-      
 
 {/*<Search setViewport={setViewport} />*/}
 
