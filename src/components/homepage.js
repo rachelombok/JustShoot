@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 
-
 mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaGVsb21ib2siLCJhIjoiY2tjODZzY2xjMDlzNzJ0bXBpZmxlaHpxbSJ9.gdsDXK9lXiEIQG4GDtbZgg';
 
 export default class Home extends React.Component {
