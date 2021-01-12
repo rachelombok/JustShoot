@@ -18,7 +18,7 @@
     "react-mapbox-gl": "^4.8.6",
     "react-mapbox-gl-geocoder": "^1.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^3.4.4"
   },
   "scripts": {
     "start": "react-scripts start",

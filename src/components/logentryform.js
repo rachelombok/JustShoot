@@ -21,12 +21,13 @@ const LogEntryForm = (props) => {
       }
       else{
         console.log('okie okie')
-      let uploadedimage;
+        let uploadedimage;
       try {
         setLoading(true);
-        uploadedimage = await uploadImage(data.image[0]);
+        uploadedimage = await uploadImage(data.images);
         console.log(uploadedimage);
       } catch (error) {
+        console.log('newerr')
         console.error(error);
         setError(error.message);
         setLoading(false);
@@ -35,6 +36,7 @@ const LogEntryForm = (props) => {
       try {
         data.latitude = props.coordinates.latitude;
         data.longitude = props.coordinates.longitude;
+        console.log(uploadedimage);
         data.image = uploadedimage.imageUrl;
         const response = await createTravelEntry(data);
         props.onFormClose();
@@ -82,7 +84,7 @@ const LogEntryForm = (props) => {
         </Form.Group>
         <Form.Group>
           <Form.Label htmlFor='images' >Images</Form.Label>
-          <Form.File name='images' type="file" accept="image/png, image/jpeg" required ref={register}/>
+          <Form.File name='images' type="file" accept="image/png, image/jpeg" required ref={register} multiple/>
           <Form.Text className="text-muted">
         {/*Select up to 5 images.*/}
           </Form.Text>
